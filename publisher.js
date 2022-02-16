@@ -8,7 +8,7 @@ const publish = async ()=>{
           console.log('Running....');
           const connection = await amqp.connect(uri);
         
-          channel = await connection.createConfirmChannel();
+          channel = await connection.createChannel();
         
           await channel.assertExchange("fanoutTest","fanout",{duable:false}); 
           await channel.publish("fanoutTest","",Buffer.from(JSON.stringify(msg)));  

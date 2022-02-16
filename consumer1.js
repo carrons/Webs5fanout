@@ -5,7 +5,7 @@ const consume = async ()=>{
     try { 
         const connection = await amqp.connect(uri);
 
-        channel = await connection.createConfirmChannel();
+        channel = await connection.createChannel();
 
         await channel.assertExchange('fanoutTest','fanout',{durable:true})
         await channel.assertQueue("",{ exclusive: false});
